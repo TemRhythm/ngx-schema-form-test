@@ -1,0 +1,13 @@
+<div style="display: flex">
+  <div style="width: 50%">
+    <div style="color: red; border: 1px solid red; padding: 20px" *ngIf="errorMessage">{{errorMessage}}</div>
+    <textarea [ngModel]="schemaJson" (ngModelChange)="schemaJsonChange($event)" rows="20" style="width: 100%"></textarea>
+  </div>
+  <div style="height: 100vh; overflow-y: auto; display: flex">
+    <sf-form style="padding: 20px" [schema]="schema" (onChange)="value = $event.value" (onErrorsChange)="formErrorChange($event)"></sf-form>
+    <div *ngIf="value">
+      <h4>Value</h4>
+      <pre>{{value | json}}</pre>
+    </div>
+  </div>
+</div>
